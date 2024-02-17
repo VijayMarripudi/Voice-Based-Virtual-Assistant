@@ -8,17 +8,10 @@ import wikipedia
 import webbrowser
 import os
 import random
-import smtplib
 import roman
-# from Class1 import Student
-# import pytesseract
+import pyttsx3
 from PIL import Image
-
-# pytesseract.pytesseract.tesseract_cmd = r"C:\Users\mridu\AppData\Local\Tesseract-OCR\tesseract.exe"
-
-
 numbers = {'hundred': 100, 'thousand': 1000, 'lakh': 100000}
-a = {'name': 'your email'}
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
@@ -35,16 +28,6 @@ var1 = StringVar()
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
-
-
-def sendemail(to, content):
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login('email id', 'password')  # email id - use any email id whose security/privacy is off
-    server.sendmail('email id', to, content)
-    server.close()
-
 
 def wishme():
     hour = int(datetime.datetime.now().hour)
@@ -196,9 +179,9 @@ def play():
             speak('myself guruji sir')
 
         elif 'who creates you' in query:
-            var.set('My Creator is DR.R.aruna students')
+            var.set('My Creator is Mr.Vijay')
             window.update()
-            speak('My Creator is DR.R.aruna students')
+            speak('My Creator is Mr.Vijay')
 
         elif 'say hello' in query:
             var.set('Hello Everyone! My self Assistant')
@@ -219,30 +202,12 @@ def play():
             path = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"  # Enter the correct Path according to your system
             os.startfile(path)
 
-        elif 'email to me' in query:
-            try:
-                var.set("What should I say")
-                window.update()
-                speak('what should I say')
-                content = takeCommand()
-                to = a['name']
-                sendemail(to, content)
-                var.set('Email has been sent!')
-                window.update()
-                speak('Email has been sent!')
-
-            except Exception as e:
-                print(e)
-                var.set("Sorry Sir! I was not able to send this email")
-                window.update()
-                speak('Sorry Sir! I was not able to send this email')
-
         elif "open python" in query:
             var.set("Opening Python Ide")
             window.update()
             speak('opening python Ide')
             os.startfile(
-                'C:\\Users\\mridu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Python 3.7\\IDLE (Python 3.7 64-bit)')  # Enter the correct Path according to your system
+                'C:\\Users\\mvijayridu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Python 3.7\\IDLE (Python 3.7 64-bit)')  # Enter the correct Path according to your system
 
         elif 'open code blocks' in query:
             var.set('Opening Codeblocks')
@@ -256,7 +221,7 @@ def play():
             window.update()
             speak('opening anaconda')
             os.startfile(
-                "C:\\Users\\mridu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Anaconda3 (64-bit)\\Anaconda Navigator")  # Enter the correct Path according to your system
+                "C:\\Users\\vijay\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Anaconda3 (64-bit)\\Anaconda Navigator")  # Enter the correct Path according to your system
 
         elif 'calculation' in query:
             sum = 0
@@ -331,18 +296,6 @@ def play():
     cap.release()
     out.release()
     cv2.destroyAllWindows()
-
-
-'''
-elif 'read the photo' in query: #If you have Pytesseract installed for Optical Character Recognition
-    try:
-        im = Image.open('pic.jpg')
-        text = pytesseract.image_to_string(im)
-        speak(text)
-    except Exception as e:
-        print("Unable to read the data")
-        print(e)
-    '''
 
 
 def update(ind):
