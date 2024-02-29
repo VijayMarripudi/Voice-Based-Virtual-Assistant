@@ -1,0 +1,6 @@
+pip install roman
+pip install wikipedia
+pip install speechrecognition
+pip install pyttsx3
+pip install opencv-python
+pip install opencv-contrib-python
